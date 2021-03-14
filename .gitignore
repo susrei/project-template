@@ -3,7 +3,6 @@
 ~*
 
 # ignore intermediate, logs and scratch dirs
-data
 intermediate
 logs
 scratch

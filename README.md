@@ -10,11 +10,10 @@ project
 |- doc/                documentation for the study
 |
 |- data/               raw and primary data, essentially all input files, never edit!
-|  |- raw_external/
-|  |- raw_internal/
+|  |- raw/
+|  |- processed/
 |  |- meta/
 |
-|- code/               all code needed to go from input files to final results
 |- notebooks/
 |
 |- intermediate/       output files from different analysis steps, can be deleted
@@ -26,9 +25,13 @@ project
 |  |- tables/
 |  |- reports/
 |
+|- src/                all source code needed to go from input files to final results
+|
 |- .gitignore          sets which parts of the repository that should be git tracked
-|- Snakefile           project workflow, carries out analysis contained in code/
+|- run.py              script to generate the final results
 |- config.yml          configuration of the project workflow
 |- environment.yml     software dependencies list, used to create a project environment
+|- Makefile            commands to manage the environment
 |- Dockerfile          recipe to create a project container
+|- Snakefile           project workflow, carries out analysis contained in code/
 ```

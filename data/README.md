@@ -1,1 +1,1 @@
-Raw and primary data, are not changed once created.
+Raw and processed data. Raw data files are not changed once created.

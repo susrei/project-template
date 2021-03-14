@@ -1,5 +1,16 @@
 channels:
-- conda-forge
-- bioconda
+  - conda-forge
+  - bioconda
 dependencies:
-- snakemake-minimal
+  - numpy=1.20.1
+  - pandas=1.2.3
+  - scikit-learn=0.24.1
+  - matplotlib=3.3.*
+  - seaborn=0.11.*
+  - umap-learn
+  - jupyterlab
+  - ipython
+  - ipykernel
+  - pytest
+  - pylint
+
