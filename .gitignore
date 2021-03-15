@@ -12,6 +12,10 @@ scratch
 .DS_Store
 Thumbs.db
 
+# IDE dirs
+.idea
+.vscode
+
 # -------------------------
 # Whitelisted files
 # -------------------------
