@@ -2,6 +2,9 @@
 .*
 ~*
 
+# ignore .env file
+.env
+
 # ignore intermediate, logs and scratch dirs
 data
 intermediate
@@ -15,6 +18,7 @@ Thumbs.db
 # IDE dirs
 .idea
 .vscode
+project-template.code-workspace
 
 # -------------------------
 # Whitelisted files
