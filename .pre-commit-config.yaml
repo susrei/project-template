@@ -1,0 +1,29 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        language: python
+        types: [python]
+        entry: black
+
+      - id: flake8
+        name: flake8
+        language: python
+        types: [python]
+        entry: flake8
+
+      - id: jupytext-sync
+        name: jupytext-sync
+        description: Sync all .ipynb in notebooks/ with .py percent scripts
+        language: system
+        pass_filenames: false
+        entry: bash -c 'find ./notebooks -type f -name "*.ipynb" | xargs jupytext --sync'

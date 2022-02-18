@@ -14,13 +14,26 @@
 
 # %% [markdown]
 # # Example using `projectname` package
+#
+# ## Load packages
 
 # %%
 from projectname.datasets import process_data
 from projectname.visualisation import heatmap
+
+# %% [markdown]
+# ## Call imported packages
 
 # %%
 process_data("input_data.csv", "output_data.csv")
 
 # %%
 heatmap("data_file.csv", "./results/figure/heatmap.png")
+
+# %% [markdown]
+# ## Do more stuff
+
+# %%
+print("Hello, World!")
+
+# %%
