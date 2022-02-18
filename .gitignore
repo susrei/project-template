@@ -1,9 +1,14 @@
-# ignore all files starting with . or ~
-.*
-~*
+# ignore python package egg-info dir
+*.egg-info
+__pycache__
 
 # ignore .env file
 .env
+
+# ignore all ipynb files (synced py files are commited instead)
+*.ipynb
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
 
 # ignore intermediate, logs and scratch dirs
 data

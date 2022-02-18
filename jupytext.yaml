@@ -1,0 +1,3 @@
+notebook_metadata_filter: "all,-widgets,-varInspector"
+cell_metadata_filter: "-hide_output"
+formats: "notebooks///ipynb,notebooks///py:percent"
