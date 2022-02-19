@@ -4,6 +4,7 @@ Module for processing datasets.
 
 import logging
 
+
 def process_data(input: str, output: str) -> None:
     """Sample method for processing data.
 
