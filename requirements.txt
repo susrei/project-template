@@ -5,7 +5,6 @@ ipython~=8.0
 jupyterlab~=3.2
 jupytext~=1.13
 matplotlib~=3.5
-nextflow~=21.10
 pandas~=1.4
 pre-commit~=2.17
 pylint~=2.9

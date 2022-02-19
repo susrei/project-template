@@ -7,7 +7,6 @@ from setuptools import setup
 
 base_packages = [
     "matplotlib~=3.5",
-    "nextflow~=21.10",
     "pandas~=1.4",
     "scikit-learn~=1.0",
     "umap-learn~=0.5",
