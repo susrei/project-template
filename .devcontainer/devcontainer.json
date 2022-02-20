@@ -21,6 +21,7 @@
         "python.linting.mypyPath": "/opt/miniconda3/envs/dev/bin/mypy",
         "python.linting.pycodestylePath": "/opt/miniconda3/envs/dev/bin/pycodestyle",
         "python.linting.pylintPath": "/opt/miniconda3/envs/dev/bin/pylint",
+        "terminal.integrated.inheritEnv": false,
         "[python]": {
             "editor.codeActionsOnSave": {
                 "source.organizeImports": true
