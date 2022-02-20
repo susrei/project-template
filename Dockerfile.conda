@@ -25,7 +25,10 @@ ARG PATH="/opt/miniconda3/bin:$PATH"
 # Set up the Conda environment
 COPY environment.yaml .
 RUN conda env create -n dev -f environment.yaml && \
-    conda clean --all
+    conda clean --all && \
+    conda init bash && \
+    source .bashrc && \
+    conda activate dev
 
 # Set default user to UID 1000
 # ENV NB_USER nbuser
@@ -45,9 +48,9 @@ RUN conda env create -n dev -f environment.yaml && \
 # USER ${NB_USER}
 
 # Setup conda environment
-RUN conda init bash && \
-    source .bashrc && \
-    conda activate dev
+# RUN conda init bash && \
+#     source .bashrc && \
+#     conda activate dev
 
 EXPOSE 8888
 
