@@ -16,6 +16,11 @@ intermediate
 logs
 scratch
 
+# ignore nextflow output
+.nextflow/
+work/
+.nextflow.log
+
 # ignore OS generated files
 .DS_Store
 Thumbs.db
