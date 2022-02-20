@@ -17,8 +17,8 @@ logs
 scratch
 
 # ignore nextflow output
-.nextflow/
-work/
+.nextflow
+work
 .nextflow.log
 
 # ignore OS generated files
