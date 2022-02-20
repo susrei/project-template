@@ -1,0 +1,23 @@
+FROM python:3.9
+
+WORKDIR /app
+
+# Install dependencies
+RUN apt-get update --yes && \
+    apt-get install -qq -y \
+    git \
+    apt-utils \
+    default-jre && \
+    apt-get upgrade --yes
+
+# Upgrade pip requirements.txt
+COPY requirements.txt /app
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+EXPOSE 8888
+
+# Install Nextflow
+RUN curl -s https://get.nextflow.io | bash && \
+    chmod +x nextflow && \
+    mv nextflow /usr/bin/

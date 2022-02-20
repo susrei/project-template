@@ -1,7 +1,7 @@
 {
-    "name": "Dev Env Python 3.9",
+    "name": "Project Python 3.9",
     "build": {
-        "dockerfile": "../Dockerfile.dev",
+        "dockerfile": "../Dockerfile.conda",
         "context": "..",
         "args": {
             // Update 'VARIANT' to pick a Python version: 3, 3.6, 3.7, 3.8, 3.9
@@ -14,7 +14,7 @@
     "settings": {
         "python.pythonPath": "/usr/local/bin/python",
         "python.languageServer": "Pylance",
-        "python.formatting.yapfPath": "/usr/local/bin/yapf",
+        "python.formatting.blackPath": "/usr/local/bin/black",
         "python.linting.enabled": true,
         "python.linting.pylintEnabled": true,
         "python.linting.mypyPath": "/usr/local/bin/mypy",

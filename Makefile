@@ -1,5 +1,6 @@
 #SHELL := /usr/bin/env zsh
-SHELL := /usr/local/bin/zsh
+#SHELL := /usr/local/bin/zsh
+SHELL := /bin/bash
 .ONESHELL:
 
 
@@ -24,7 +25,7 @@ ACTIVATE_ENV = source activate $(CONDA_ENV_NAME)
 
 .PHONY: build-conda-env
 build-conda-env: $(CONDA_ENV_NAME)  ## Build the conda environment
-$(CONDA_ENV_NAME):  
+$(CONDA_ENV_NAME):
 	conda create -n $(CONDA_ENV_NAME) --copy -y python=$(PY_VERSION)
 	conda env update -n $(CONDA_ENV_NAME) -f environment.yaml
 
@@ -76,4 +77,3 @@ lint:  ## Run lint in all files in the src directory
 
 .PHONY: all
 all: pip-install lint test  ## Run pip-install lint test
-
