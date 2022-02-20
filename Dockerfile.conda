@@ -8,7 +8,8 @@ RUN apt-get update && \
     build-essential \
     ca-certificates \
     curl \
-    git
+    git \
+    vim
 
 RUN curl https://repo.anaconda.com/miniconda/Miniconda3-py39_4.11.0-Linux-x86_64.sh -O && \
     bash Miniconda3-py39_4.11.0-Linux-x86_64.sh -bf -p /opt/miniconda3/ && \
@@ -27,21 +28,21 @@ RUN conda env create -n dev -f environment.yaml && \
     conda clean --all
 
 # Set default user to UID 1000
-ENV NB_USER nbuser
-ENV NB_UID 1000
+# ENV NB_USER nbuser
+# ENV NB_UID 1000
 
-RUN adduser --disabled-password --no-create-home \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
+# RUN adduser --disabled-password --no-create-home \
+#     --gecos "Default user" \
+#     --uid ${NB_UID} \
+#     ${NB_USER}
 
 # Define workdir and set ownership to NB_USER
-WORKDIR /home/${NB_USER}
-ENV HOME /home/${NB_USER}
+# WORKDIR /home/${NB_USER}
+# ENV HOME /home/${NB_USER}
 
-USER root
-RUN chown -R ${NB_UID} ${HOME}
-USER ${NB_USER}
+# USER root
+# RUN chown -R ${NB_UID} ${HOME}
+# USER ${NB_USER}
 
 # Setup conda environment
 RUN conda init bash && \
