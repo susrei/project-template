@@ -19,6 +19,7 @@ dev_packages = base_packages + [
     "ipython~=8.0",
     "jupyterlab~=3.2",
     "jupytext~=1.13",
+    "mypy~=0.931",
     "pre-commit~=2.17",
     "pylint~=2.9",
     "pytest~=6.2",
