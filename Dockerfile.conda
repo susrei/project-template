@@ -1,26 +1,32 @@
-FROM ubuntu:16.04
-LABEL description = "Lightweight image with Conda, Jupyter Notebook and Snakemake"
+FROM ubuntu:20.04
+LABEL description = "Lightweight image with Conda, Jupyter Notebook and Nextflow"
 
 # Install Miniconda3 and prerequisites
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends bzip2 curl ca-certificates
-RUN curl https://repo.continuum.io/miniconda/Miniconda3-4.5.11-Linux-x86_64.sh -O && \
-    bash Miniconda3-4.5.11-Linux-x86_64.sh -bf -p /opt/miniconda3/ && \
-    rm Miniconda3-4.5.11-Linux-x86_64.sh
+    apt-get install -y --no-install-recommends \
+    bzip2 \
+    build-essential \
+    ca-certificates \
+    curl \
+    git
 
-# Add Conda to PATH
-ENV PATH="/opt/miniconda3/bin:${PATH}"
+RUN curl https://repo.anaconda.com/miniconda/Miniconda3-py39_4.11.0-Linux-x86_64.sh -O && \
+    bash Miniconda3-py39_4.11.0-Linux-x86_64.sh -bf -p /opt/miniconda3/ && \
+    rm Miniconda3-py39_4.11.0-Linux-x86_64.sh
 
 # Use bash as shell
 SHELL ["/bin/bash", "-c"]
 
+# Add Conda to PATH
+ENV PATH="/opt/miniconda3/bin:$PATH"
+ARG PATH="/opt/miniconda3/bin:$PATH"
+
 # Set up the Conda environment
-COPY environment.yml .
-RUN conda env update -n root -f environment.yml && \
+COPY environment.yaml .
+RUN conda env create -n dev -f environment.yaml && \
     conda clean --all
 
-# Install Jupyter Notebook and set default user to UID 1000
-RUN pip install --no-cache-dir notebook==5.*
+# Set default user to UID 1000
 ENV NB_USER nbuser
 ENV NB_UID 1000
 
@@ -30,17 +36,19 @@ RUN adduser --disabled-password --no-create-home \
     ${NB_USER}
 
 # Define workdir and set ownership to NB_USER
-WORKDIR /home
-ENV HOME /home
+WORKDIR /home/${NB_USER}
+ENV HOME /home/${NB_USER}
+
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
 
-# Add the workflow files and the code
-# TODO: add Nextflow insted
-# COPY Snakefile config.yml ./
-COPY code ./code/
-COPY notebooks ./notebooks/
+# Setup conda environment
+RUN conda init bash && \
+    source .bashrc && \
+    conda activate dev
+
+EXPOSE 8888
 
 # Start Bash shell by default
 CMD /bin/bash
