@@ -47,8 +47,11 @@ USER ${NB_USER}
 RUN conda init bash && \
     source .bashrc && \
     conda activate dev
+<<<<<<< HEAD
 
 EXPOSE 8888
+=======
+>>>>>>> 7d9a67320b1664021121cfd34e5796c1226893e5
 
 # Start Bash shell by default
 CMD /bin/bash
