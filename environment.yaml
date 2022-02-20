@@ -1,0 +1,21 @@
+channels:
+  - conda-forge
+  - anaconda
+  - bioconda
+dependencies:
+  - black=22.1.*
+  - flake8=3.8.*
+  - ipykernel=6.9.*
+  - ipython=8.0.*
+  - jupyterlab=3.2.*
+  - jupytext=1.13.*
+  - matplotlib=3.5.*
+  - mypy=0.931
+  - nextflow=21.10.*
+  - pandas=1.4.*
+  - pre-commit=2.17.*
+  - pylint=2.9.*
+  - pytest=6.2.*
+  - python=3.9.*
+  - scikit-learn=1.0.*
+  - umap-learn=0.5.*
