@@ -33,7 +33,7 @@
 
 # %%
 from projectname.datasets import process_data
-from projectname.visualisation import heatmap
+from projectname.plotting import heatmap
 
 # %% [markdown]
 # ## Call imported packages
