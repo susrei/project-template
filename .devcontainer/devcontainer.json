@@ -11,15 +11,16 @@
         }
     },
     // Set *default* container specific settings.json values on container create.
+    // NOTE: if you change the container you should change the paths accordingly
     "settings": {
-        "python.pythonPath": "/usr/local/bin/python",
+        "python.pythonPath": "/opt/miniconda3/envs/dev/bin/python",
         "python.languageServer": "Pylance",
-        "python.formatting.blackPath": "/usr/local/bin/black",
+        "python.formatting.blackPath": "/opt/miniconda3/envs/dev/bin/black",
         "python.linting.enabled": true,
         "python.linting.pylintEnabled": true,
-        "python.linting.mypyPath": "/usr/local/bin/mypy",
-        "python.linting.pycodestylePath": "/usr/local/bin/pycodestyle",
-        "python.linting.pylintPath": "/usr/local/bin/pylint",
+        "python.linting.mypyPath": "/opt/miniconda3/envs/dev/bin/mypy",
+        "python.linting.pycodestylePath": "/opt/miniconda3/envs/dev/bin/pycodestyle",
+        "python.linting.pylintPath": "/opt/miniconda3/envs/dev/bin/pylint",
         "[python]": {
             "editor.codeActionsOnSave": {
                 "source.organizeImports": true
