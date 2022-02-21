@@ -27,3 +27,13 @@ repos:
         language: system
         pass_filenames: false
         entry: bash -c 'find ./notebooks -type f -name "*.ipynb" | xargs jupytext --sync'
+
+      - id: jupytext-pair-ipynb
+        name: jupytext-pair-ipynb
+        description:
+          Pair all notebooks (.ipynb) in notebooks/ with Python scripts (.py) percent format.
+          Must run after 'jupytext-sync' so that outdated .ipynb files don't overwrite more
+          up to date .py files.
+        language: system
+        pass_filenames: false
+        entry: bash -c 'find ./notebooks -type f -name "*.ipynb" | xargs jupytext --set-formats ipynb,py:percent --pipe black'
