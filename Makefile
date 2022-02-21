@@ -65,6 +65,14 @@ install-src:  ## Install Python package in editable mode with base dependencies
 install-dev:  ## Install Python package in editable mode with dev dependencies
 	pip install -e ".[dev]"
 
+.PHONY: sync-notebooks
+sync-notebooks: ## Sync all .ipynb in notebooks/ with .py percent scripts
+    find ./notebooks -type f -name "*.ipynb" | xargs jupytext --sync
+
+.PHONY: pair-notebooks
+pair-notebooks: sync-notebooks  ## Pair all notebooks (.ipynb) in notebooks/ with Python scripts (.py) (percent format)
+	find ./notebooks -type f -name "*.ipynb" | xargs jupytext --set-formats ipynb,py:percent --pipe black
+
 .PHONY: test
 test:  ## Run tests
 	#python -m pytest -vv --cov=myrepolib tests/*.py
