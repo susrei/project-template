@@ -27,8 +27,7 @@ COPY environment.yaml .
 RUN conda env create -n dev -f environment.yaml && \
     conda clean --all && \
     conda init bash && \
-    source .bashrc && \
-    conda activate dev
+    source /root/.bashrc
 
 # Set default user to UID 1000
 # ENV NB_USER nbuser
