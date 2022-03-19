@@ -5,16 +5,31 @@ Everythin defined in this file can be run with `python -m projectname`.
 """
 
 import argparse
+import logging
+
+from .plotting import heatmap
+from .datasets import process_data
 
 
-def trim_func(args):
-    """Dummy trim function."""
-    print(f"Trimming data from {args.dir} and output to {args.out}...")
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s : %(levelname)s : %(module)s : %(funcName)s : %(message)s",  # noqa: E501
+)
+
+
+def preprocess_fun(args):
+    """Dummy preprocessing function."""
+    logger.info(
+        f"Preprocessing data from {args.dir} and output to {args.out}..."
+    )  # noqa: E501
+    process_data(args.dir, args.out)
 
 
 def plot_func(args):
     """Dummy plot function."""
-    print(f"Plotting data from {args.dir} and output to {args.out}...")
+    logger.info(f"Plotting data from {args.dir} and output to {args.out}...")
+    heatmap(args.dir, args.out)
 
 
 def main():
@@ -22,36 +37,35 @@ def main():
     and the subparser acts as receiver of different commands, each taking
     their own arguments."""
     parser = argparse.ArgumentParser(
-        prog="projutil", description="Welcome to the ProjectName's CLI!"
+        prog="projectname", description="Welcome to the ProjectName's CLI!"
     )
     subparser = parser.add_subparsers()
 
-    # The trim command
-    trim = subparser.add_parser(
-        "trim",
-        help="Help message for trim subcommand"
+    # The preprocess command
+    preprocess = subparser.add_parser(
+        "preprocess", help="Help message for preprocess subcommand"
     )
 
-    trim.add_argument(
+    preprocess.add_argument(
         "-d", "--dir", help="data directory", required=True, metavar="path"
     )
-    trim.add_argument(
+    preprocess.add_argument(
         "-o", "--out", help="ouptut directory", required=True, metavar="path"
     )
 
-    trim.add_argument(
+    preprocess.add_argument(
         "-p",
         "--prefix",
         nargs="?",
         help="output file prefix.",
     )
 
-    trim.set_defaults(func=trim_func)
+    preprocess.set_defaults(func=preprocess_fun)
 
     # The plot command
     plot = subparser.add_parser(
         "plot",
-        help="Plot the singals in a drive and save the resulting figure"
+        help="Plot the signals in a drive and save the resulting figure"
     )
     plot.add_argument(
         "-d", "--dir", help="data directory", metavar="path", required=True
@@ -69,7 +83,8 @@ def main():
     plot.add_argument(
         "--genes",
         nargs="*",
-        default=argparse.SUPPRESS, help="list of genes to plot"
+        default=argparse.SUPPRESS,
+        help="list of genes to plot"
     )
 
     # The overwrite option

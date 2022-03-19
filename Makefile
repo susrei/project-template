@@ -55,7 +55,7 @@ venv-setup:  ## Create environment with venv
 .PHONY: pip-install
 pip-install:  ## Pip install requirements from file
 	pip install --upgrade pip && \
-    	pip install -r requirements.txt
+		pip install -r requirements.txt
 
 .PHONY: install-src
 install-src:  ## Install Python package in editable mode with base dependencies
@@ -67,7 +67,7 @@ install-dev:  ## Install Python package in editable mode with dev dependencies
 
 .PHONY: sync-notebooks
 sync-notebooks: ## Sync all .ipynb in notebooks/ with .py percent scripts
-    find ./notebooks -type f -name "*.ipynb" | xargs jupytext --sync
+	find ./notebooks -type f -name "*.ipynb" | xargs jupytext --sync
 
 .PHONY: pair-notebooks
 pair-notebooks: sync-notebooks  ## Pair all notebooks (.ipynb) in notebooks/ with Python scripts (.py) (percent format)
