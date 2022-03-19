@@ -15,7 +15,7 @@ RUN pip install --upgrade pip && \
     pip install -e ".[base]"
 
 # Make the 'projutil' utility the entrypoint
-ENTRYPOINT ["projutil"]
+ENTRYPOINT ["projectname"]
 
 # Print the help message if no other arguments are provided
 # NOTE: this will confuse Singularity

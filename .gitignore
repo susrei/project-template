@@ -12,7 +12,6 @@ __pycache__
 
 # ignore intermediate, logs and scratch dirs
 data
-intermediate
 logs
 scratch
 
@@ -28,7 +27,7 @@ Thumbs.db
 # IDE dirs
 .idea
 .vscode
-project-template.code-workspace
+*.code-workspace
 
 # -------------------------
 # Whitelisted files

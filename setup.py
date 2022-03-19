@@ -34,5 +34,7 @@ setup(
         "base": base_packages,
         "dev": dev_packages,
     },
-    entry_points={"console_scripts": ["projutil = projectname.__main__:main"]},
+    entry_points={
+        "console_scripts": ["projectname = projectname.__main__:main"]
+    },
 )

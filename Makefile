@@ -20,13 +20,13 @@ help:
 ####################
 
 PY_VERSION := 3.9.10
-CONDA_ENV_NAME ?= env-conda-test
+CONDA_ENV_NAME ?= $(notdir $(shell pwd))
 ACTIVATE_ENV = source activate $(CONDA_ENV_NAME)
 
 .PHONY: build-conda-env
 build-conda-env: $(CONDA_ENV_NAME)  ## Build the conda environment
 $(CONDA_ENV_NAME):
-	conda create -n $(CONDA_ENV_NAME) --copy -y python=$(PY_VERSION)
+	# conda create -n $(CONDA_ENV_NAME) --copy -y python=$(PY_VERSION)
 	conda env update -n $(CONDA_ENV_NAME) -f environment.yaml
 
 .PHONY: clean-conda-env
@@ -46,7 +46,7 @@ remove-from-jupyter:  ## Remove the conda environment from Jupyter
 # Pip Environment
 ##################
 
-PROJECT_NAME:=project-env
+PROJECT_NAME:=$(notdir $(shell pwd))
 
 .PHONY: venv-setup
 venv-setup:  ## Create environment with venv
@@ -55,7 +55,7 @@ venv-setup:  ## Create environment with venv
 .PHONY: pip-install
 pip-install:  ## Pip install requirements from file
 	pip install --upgrade pip && \
-    	pip install -r requirements.txt
+		pip install -r requirements.txt
 
 .PHONY: install-src
 install-src:  ## Install Python package in editable mode with base dependencies
@@ -64,6 +64,14 @@ install-src:  ## Install Python package in editable mode with base dependencies
 .PHONY: install-dev
 install-dev:  ## Install Python package in editable mode with dev dependencies
 	pip install -e ".[dev]"
+
+.PHONY: sync-notebooks
+sync-notebooks: ## Sync all .ipynb in notebooks/ with .py percent scripts
+	find ./notebooks -type f -name "*.ipynb" | xargs jupytext --sync
+
+.PHONY: pair-notebooks
+pair-notebooks: sync-notebooks  ## Pair all notebooks (.ipynb) in notebooks/ with Python scripts (.py) (percent format)
+	find ./notebooks -type f -name "*.ipynb" | xargs jupytext --set-formats ipynb,py:percent --pipe black
 
 .PHONY: test
 test:  ## Run tests

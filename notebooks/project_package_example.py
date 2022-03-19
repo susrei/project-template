@@ -4,6 +4,7 @@
 #     hash: 949777d72b0d2535278d3dc13498b2535136f6dfe0678499012e853ee9abcab1
 #   jupytext:
 #     cell_metadata_filter: -hide_output
+#     formats: ipynb,py:percent
 #     notebook_metadata_filter: all,-widgets,-varInspector
 #     text_representation:
 #       extension: .py
