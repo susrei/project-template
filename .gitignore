@@ -11,8 +11,6 @@ __pycache__
 */.ipynb_checkpoints/*
 
 # ignore intermediate, logs and scratch dirs
-data
-intermediate
 logs
 scratch
 
