@@ -3,13 +3,14 @@ FROM python:3.9
 WORKDIR /app
 
 # Install dependencies
-RUN apt-get update --yes && \
-    apt-get install -qq -y \
+RUN apt-get update --yes && apt-get upgrade --yes && \
+    apt-get install -y --no-install-recommends\
     apt-utils \
     build-essential \
     git \
-    default-jre && \
-    apt-get upgrade --yes
+    default-jre \
+    openssh-client
+
 
 # Upgrade pip requirements.txt
 COPY requirements.txt /app

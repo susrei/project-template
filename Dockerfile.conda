@@ -2,13 +2,14 @@ FROM ubuntu:20.04
 LABEL description = "Lightweight image with Conda, Jupyter Notebook and Nextflow"
 
 # Install Miniconda3 and prerequisites
-RUN apt-get update && \
+RUN apt-get update --yes && apt-get upgrade --yes && \
     apt-get install -y --no-install-recommends \
     bzip2 \
     build-essential \
     ca-certificates \
     curl \
     git \
+    openssh-client \
     vim
 
 RUN curl https://repo.anaconda.com/miniconda/Miniconda3-py39_4.11.0-Linux-x86_64.sh -O && \
