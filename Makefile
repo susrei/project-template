@@ -20,13 +20,13 @@ help:
 ####################
 
 PY_VERSION := 3.9.10
-CONDA_ENV_NAME ?= env-conda-test
+CONDA_ENV_NAME ?= $(notdir $(shell pwd))
 ACTIVATE_ENV = source activate $(CONDA_ENV_NAME)
 
 .PHONY: build-conda-env
 build-conda-env: $(CONDA_ENV_NAME)  ## Build the conda environment
 $(CONDA_ENV_NAME):
-	conda create -n $(CONDA_ENV_NAME) --copy -y python=$(PY_VERSION)
+	# conda create -n $(CONDA_ENV_NAME) --copy -y python=$(PY_VERSION)
 	conda env update -n $(CONDA_ENV_NAME) -f environment.yaml
 
 .PHONY: clean-conda-env
@@ -46,7 +46,7 @@ remove-from-jupyter:  ## Remove the conda environment from Jupyter
 # Pip Environment
 ##################
 
-PROJECT_NAME:=project-env
+PROJECT_NAME:=$(notdir $(shell pwd))
 
 .PHONY: venv-setup
 venv-setup:  ## Create environment with venv
