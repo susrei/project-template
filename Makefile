@@ -85,3 +85,18 @@ lint:  ## Run lint in all files in the src directory
 
 .PHONY: all
 all: pip-install lint test  ## Run pip-install lint test
+
+
+##################
+# R Environment
+##################
+
+R_VERSION := 4.2.0
+
+.PHONY: open-rstudio
+open-rstudio:  ## Open RStudio instance in the browser
+	docker run --rm -ti -e PASSWORD=${PROJECT_NAME} -v ${PWD}:/home/rstudio -p 8787:8787 rocker/rstudio:${R_VERSION}
+
+.PHONY: build-r-container
+build-r-container:  ## Build Docker container with the R application
+	docker build -t ${PROJECT_NAME}-r -f R/Dockerfile .
