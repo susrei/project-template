@@ -1,0 +1,6 @@
+install.packages("BiocManager")
+BiocManager::install("MutationalPatterns")
+BiocManager::install("Biobase")
+install.packages("NMF")
+install.packages("ggplot2")
+install.packages("optparse")
