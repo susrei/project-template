@@ -56,6 +56,9 @@ if (!("file" %in% names(opt)) || !("outfile" %in% names(opt))) {
 #     outdir <- substr(opt$outdir, 1, nchar(opt$outdir)-1)
 # }
 
+## Add prefix to the output file.
+outfile.path <- paste(opt$prefix, opt$outfile, sep="_")
+
 ## Example: drop ending backslash from prefix
 # prefix <- opt$prefix
 # if (substr(opt$prefix, nchar(opt$prefix), nchar(opt$prefix)) == "/") {
@@ -74,7 +77,7 @@ if (!("file" %in% names(opt)) || !("outfile" %in% names(opt))) {
 if (opt$process) {
     # Example: check if required arguments are supplied
     if (("file" %in% names(opt)) && ("outfile" %in% names(opt))) {
-        process.data(opt$file, opt$outfile)
+        process.data(opt$file, outfile.path)
     } else {
         print_help(opt_parser)
         stop("You must supply 'file' and 'outfile'. See usage above.")
@@ -83,5 +86,5 @@ if (opt$process) {
 
 ## Run plotting
 if (opt$plot) {
-    plot.data(opt$file, opt$outfile)
+    plot.data(opt$file, outfile.path)
 }
