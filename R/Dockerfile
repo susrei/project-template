@@ -9,7 +9,9 @@ RUN mkdir -p /opt/software/setup/R && \
     mkdir -p /opt/extdata
 
 COPY R/install-packages.R /opt/software/setup/R/install-packages.R
-COPY data/processed/alexandrov_signatures_probabilities.txt /opt/extdata/alexandrov_signatures_probabilities.txt
+
+# Copy required data files from the data/ folder in the container, e.g.
+# COPY data/ /opt/extdata/
 
 RUN Rscript /opt/software/setup/R/install-packages.R
 
