@@ -1,6 +1,18 @@
-install.packages("BiocManager")
-BiocManager::install("MutationalPatterns")
-BiocManager::install("Biobase")
-install.packages("NMF")
-install.packages("ggplot2")
+## Biobase (needed for Bioconductor packages) ##################################
+# install.packages("BiocManager")
+# BiocManager::install("Biobase")
+
+## Command Line Arguments ######################################################
 install.packages("optparse")
+
+## Visualization ###############################################################
+# install.packages("ggplot2")
+
+## RNASeq ######################################################################
+# TODO
+
+## scRNASeq ####################################################################
+# TODO
+
+## Data processing #############################################################
+# TODO
