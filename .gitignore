@@ -33,3 +33,7 @@ Thumbs.db
 # Whitelisted files
 # -------------------------
 !.gitignore
+
+# ignore RStudio directories
+.config/
+.local/
